@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: pink;
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="question">Will you be My Valentine? &lt;3</h1>
+    <!-- The image is wrapped in a link that points to the provided address -->
+    <a id="gifLink" href="https://images.app.goo.gl/diUnnAaRXZnderhv5" target="_blank">
+      <img id="gif" src="https://media1.tenor.com/m/2E63TvtkGB0AAAAd/red-panda-flowers.gif" alt="Panda giving flowers">
+    </a>
+    <div class="buttons">
+      <button onclick="yesResponse()" id="yes">YES</button>
+      <button onclick="nextSlide()" id="no">NO</button>
+    </div>
+  </div>
+
+  <script>
+    let step = 0;
+    const questions = [
+      "Are you sure?",
+      "Are you really sure?",
+      "What if I asked nicely?",
+      "Pretty please?",
+      "Pretty please?",
+      "But I’ll die :( ?",
+      "Yep, I died T-T",
+      "Are you talking to Tabby's Ghost?",
+      "RETRY? Think really hard and choose &lt;3"
+    ];
+
+    // When YES is clicked on the first slide, jump to the final slide and remove the link.
+    function yesResponse() {
+      document.getElementById("question").innerHTML = "Awwww ….Lesgooo pookieee ..pandas and avocados&lt;33";
+      // Change to the new final slide GIF URL.
+      document.getElementById("gif").src = "https://media1.tenor.com/m/fXELhxf0jW0AAAAd/illus-hug.gif";
+      // Remove the link so that the final slide's image is not clickable.
+      document.getElementById("gifLink").removeAttribute("href");
+    }
+
+    // When NO is clicked, progress through the slides, keeping the same red panda GIF.
+    function nextSlide() {
+      if (step < questions.length) {
+        document.getElementById("question").innerHTML = questions[step];
+        // Use the same red panda GIF for all slides until the final one.
+        document.getElementById("gif").src = "https://media1.tenor.com/m/2E63TvtkGB0AAAAd/red-panda-flowers.gif";
+        // Ensure the link remains active.
+        document.getElementById("gifLink").href = "https://images.app.goo.gl/diUnnAaRXZnderhv5";
+        step++;
+      }
+    }
+  </script>
+</body>
+</html>
